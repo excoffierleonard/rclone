@@ -1,0 +1,12 @@
+services:
+  app:
+    image: ghcr.io/excoffierleonard/rclone:latest
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      RCLONE_REMOTE: ${RCLONE_REMOTE}
+      RCLONE_CONFIG_GDRIVE_TOKEN: ${RCLONE_CONFIG_GDRIVE_TOKEN}
+    volumes:
+      - ./folder1:/app/mirror/folder1:ro
+      - ./folder2:/app/mirror/folder2:ro
